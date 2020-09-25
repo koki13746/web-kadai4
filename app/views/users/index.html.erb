@@ -1,0 +1,51 @@
+<%= render '/header' %>
+<div class='body'>
+    <div class='container'>
+        <p id="notice"></p>
+        <div class='row'>
+            <%= render '/left_current' , book: @book %>
+            <div class='col-xs-9'>
+                <h2>Users</h2>
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th colspan="3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @users.each do |user| %>
+                        <tr>
+                            <% if user.profile_image_id.nil? %>
+                            <td>
+                                <%= image_tag "noimage_person_c.png", size:"30x30"%>
+                            </td>
+                            <% else %>
+                            <td>
+                                <%= attachment_image_tag user, :profile_image ,size:'30x30' %>
+                            </td>
+                            <% end %>
+                            <td>
+                                <%= user.name %>
+                            </td>
+                            <td>
+                                <%=link_to "Show", "/users/#{user.id}" , class:"user_#{user.id}"%>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-3 col-xs-offset-9'>
+                <p>CopyRight Infratop.inc</p>
+            </div>
+        </div>
+    </div>
+</footer>

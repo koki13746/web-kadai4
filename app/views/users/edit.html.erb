@@ -1,0 +1,38 @@
+<%= render '/header'%>
+<div class='body'>
+    <div class='container'>
+        <p id="notice">
+            <%=  notice %>
+        </p>
+        <h2>User info</h2>
+        <%= form_for(@user,class:"edit_user") do |f| %>
+        <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+        <div class="field user_edit_field">
+            <h4>Name</h4>
+            <%= f.text_field :name %>
+        </div>
+        <div class="user_edit_field">
+            <h4>Image</h4>
+            <%= f.attachment_field :profile_image %>
+        </div>
+        <div class="field user_edit_field">
+            <h4>Introduction</h4>
+            <%= f.text_area :introduction %>
+        </div>
+        <div class="actions user_edit_field">
+            <%= f.submit 'Update User' %>
+        </div>
+        <% end %>
+    </div>
+</div>
+<footer>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-3 col-xs-offset-9'>
+                <p>CopyRight Infratop.inc</p>
+            </div>
+        </div>
+    </div>
+</footer>
